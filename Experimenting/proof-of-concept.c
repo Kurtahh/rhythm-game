@@ -2,12 +2,6 @@
 #define WINDOW_W 1920
 #define WINDOW_H 1080
 
-void load()
-{
-    InitWindow(WINDOW_W, WINDOW_H, "Proof of concept");
-    SetTargetFPS(60); 
-}
-
 void drawCentre()
 {
     int rectW = 400;
@@ -75,21 +69,28 @@ void drawNote(Vector2 pos)
 
 void update()
 {
-    //static
-    ClearBackground(RAYWHITE);
-    drawCentre();
+    
+}
 
-    //dynamic
-    drawNote((Vector2){100, 150});
+void draw()
+{
+    BeginDrawing();
+        //static
+        ClearBackground(RAYWHITE);
+        drawCentre();
+
+        //dynamic
+        drawNote((Vector2){100, 150});
+    EndDrawing();
 }
 
 int main(){
-    load();
+    InitWindow(WINDOW_W, WINDOW_H, "Proof of concept");
+    SetTargetFPS(60);
 
     while(!WindowShouldClose()){
-        BeginDrawing();
-            update();
-        EndDrawing();
+        update();
+        draw();
     }
 
     return 0;

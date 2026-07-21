@@ -43,10 +43,15 @@ void pollInput()
 
 void updateKey()
 {
-    if(currentKey == 91)
-        currentKey = 65;
-    else if(countdown == 10)
+    static bool isUpdated = false;
+    if(currentKey == 91) // currentKey == 'Z'
+        currentKey = 65; // currentKey = 'A'
+    if(countdown >= 9.9 && !isUpdated) {
         currentKey++;
+        isUpdated = true;
+    }
+    else if(countdown <= 9.9)
+        isUpdated = false;
 }
 
 void update()
@@ -77,7 +82,7 @@ void drawCurrentKey()
 {
     char c = currentKey;
     const char* text = TextFormat("%c", c);
-    int fontSize = 75;
+    int fontSize = 400;
     int textWidth = MeasureText(text, fontSize);
     DrawText(text, WINDOW_W/2 - textWidth/2, WINDOW_H/2 - fontSize/2, fontSize, BLACK);
 }
@@ -87,7 +92,7 @@ void draw()
     BeginDrawing();
         drawBackground();
         drawCountdown();
-        drawCurrentKey;
+        drawCurrentKey();
     EndDrawing();
 }
 
