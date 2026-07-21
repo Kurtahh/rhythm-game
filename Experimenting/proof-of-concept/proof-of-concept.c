@@ -1,4 +1,5 @@
 #include "raylib.h"
+#include "note.h"
 #define WINDOW_W 1920
 #define WINDOW_H 1080
 
@@ -67,9 +68,19 @@ void drawNote(Vector2 pos)
     DrawText("A", textPos.x, textPos.y, 75, WHITE);
 }
 
+void updateIncomingNotes()
+{
+
+}
+
 void update()
 {
-    
+    updateIncomingNotes();
+}
+
+void drawIncomingNotes()
+{
+
 }
 
 void draw()
